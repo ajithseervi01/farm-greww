@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Workforce Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div id="welcome" class="page">
+        <h1>Hello 🌿</h1>
+        <button class="animated-button" onclick="showLogin()">Get Started</button>
+    </div>
+
+    <div id="login" class="page hidden">
+        <h2>Login</h2>
+        <input type="text" id="phone" placeholder="Enter Phone Number">
+        <button class="animated-button" onclick="generateOTP()">Generate OTP</button>
+    </div>
+
+    <div id="otp" class="page hidden">
+        <h2>Enter OTP</h2>
+        <input type="text" id="otpCode" placeholder="Enter OTP">
+        <button class="animated-button" onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <div id="dob" class="page hidden">
+        <h2>Select Date of Birth</h2>
+        <input type="text" id="dateOfBirth" class="styled-date" placeholder="Select Date of Birth">
+        <button class="animated-button" onclick="nextStep('gender')">Next</button>
+    </div>
+
+    <div id="gender" class="page hidden">
+        <h2>Select Gender</h2>
+        <select id="genderSelect">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Rather not say</option>
+        </select>
+        <button class="animated-button" onclick="nextStep('status')">Next</button>
+    </div>
+
+    <div id="status" class="page hidden">
+        <h2>Are you a beginner or a former?</h2>
+        <select id="statusSelect">
+            <option value="beginner">Beginner</option>
+            <option value="former">Former</option>
+        </select>
+        <button class="animated-button" onclick="completeSignUp()">Complete Sign-Up</button>
+    </div>
+
+    <div id="dashboard" class="page hidden">
+        <div class="header">
+            <h1>Hello 🌿</h1>
+            <button id="menuButton" class="menu-icon" onclick="toggleMenu()">⋮</button>
+            <div id="menu" class="menu hidden">
+                <ul>
+                    <li><a href="#">Saved</a></li>
+                    <li><a href="#">Your Activities</a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">Time Spent</a></li>
+                    <li><a href="#">Sharing</a></li>
+                    <li><a href="#">Device Permission</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                    <li><a href="#">Language</a></li>
+                    <li><a href="#">Orders and Payments</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Account Status</a></li>
+                    <li><a href="#">About App</a></li>
+                    <li><a href="#" onclick="logOut()">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <h2>Welcome to Your Dashboard!</h2>
+
+            <section class="info-section">
+                <h3>Workforce Management Overview</h3>
+                <p>Efficient labor management is critical for large-scale farms. Our platform helps streamline scheduling, track labor hours, and ensure compliance with labor laws.</p>
+                <ul>
+                    <li><a href="#labor-management" onclick="showSection('labor-management')">Labor Management Strategies</a></li>
+                    <li><a href="#productivity" onclick="showSection('productivity')">Boosting Farm Productivity</a></li>
+                    <li><a href="#compliance" onclick="showSection('compliance')">Ensuring Regulatory Compliance</a></li>
+                    <li><a href="#tools" onclick="showSection('tools')">Advanced Tools for Farm Management</a></li>
+                </ul>
+            </section>
+
+            <section id="labor-management" class="info-section hidden">
+                <h3>Labor Management Strategies</h3>
+                <p>Learn about effective labor management techniques, including how to schedule shifts efficiently, manage different types of labor, and improve overall workforce productivity.</p>
+                <ul>
+                    <li><a href="https://example.com/scheduling-strategies" target="_blank">Effective Scheduling Techniques</a></li>
+                    <li><a href="https://example.com/workforce-planning" target="_blank">Workforce Planning and Optimization</a></li>
+                    <li><a href="https://example.com/employee-engagement" target="_blank">Enhancing Employee Engagement</a></li>
+                </ul>
+            </section>
+
+            <section id="productivity" class="info-section hidden">
+                <h3>Boosting Farm Productivity</h3>
+                <p>Discover how technology can enhance farm productivity, including tools for tracking performance, optimizing operations, and analyzing productivity metrics.</p>
+                <ul>
+                    <li><a href="https://example.com/productivity-tech" target="_blank">Technologies to Increase Productivity</a></li>
+                    <li><a href="https://example.com/performance-metrics" target="_blank">Key Performance Metrics to Track</a></li>
+                    <li><a href="https://example.com/operation-optimization" target="_blank">Optimizing Farm Operations</a></li>
+                </ul>
+            </section>
+
+            <section id="compliance" class="info-section hidden">
+                <h3>Ensuring Regulatory Compliance</h3>
+                <p>Ensure that your farm complies with all relevant labor laws and regulations. This section covers compliance requirements and tools to help you stay compliant.</p>
+                <ul>
+                    <li><a href="https://example.com/labor-laws" target="_blank">Understanding Labor Laws</a></li>
+                    <li><a href="https://example.com/compliance-tools" target="_blank">Tools for Compliance Monitoring</a></li>
+                    <li><a href="https://example.com/audit-preparation" target="_blank">Preparing for Audits</a></li>
+                </ul>
+            </section>
+
+            <section id="tools" class="info-section hidden">
+                <h3>Advanced Tools for Farm Management</h3>
+                <p>Explore advanced tools designed to streamline farm management, from scheduling and attendance tracking to productivity analysis and reporting.</p>
+                <ul>
+                    <li><a href="https://example.com/scheduling-tools" target="_blank">Advanced Scheduling Tools</a></li>
+                    <li><a href="https://example.com/attendance-tracking" target="_blank">Attendance and Time Tracking</a></li>
+                    <li><a href="https://example.com/productivity-analytics" target="_blank">Productivity Analytics and Reporting</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+</body>
+</html>
